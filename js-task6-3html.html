@@ -7,54 +7,43 @@
     <main>
 
       <script>
-					const strOne = 'abcd';
-          const strTwo = 'cdab';
-          let oddResult, evenResult, result, oddCount = 0, evenCount = 0, count1=0, count2=0;
-          
+				const strOne = 'abcd';
+        const strTwo = 'cdab';                   
 
-					function stringCompare(strOne, strTwo) {
-            let str1 = strOne.split('').sort().join('');
-            let str2 = strTwo.split('').sort().join('');
-            if (str1 !== str2) result = false;
-            else { 
-              for (let i = 0; i < strOne.length; i++) {
-                let  subResult = false;
-                  for (let k = 0; k < strTwo.length; k++) {
-                    if (i%2 === 0 && k%2 === 0) {
-                      subResult = strOne[i] === strTwo[k]; console.log(subResult, strOne[i], strTwo[k], count1)
-                      count1++;
-                      if (subResult === true) {
-                        oddCount++;}
-                      /* if (subResult === true) { oddResult = true;
-                        oddCount++;                       
-                        
-                        }
-                      else count1++;  */
-                    } /* console.log(count1, oddCount, strOne[i], strTwo[k], subResult); */
-                        
-                    if (i%2 !== 0 && k%2 !== 0) {
-                      subResult = strOne[i] === strTwo[k]; console.log(subResult, strOne[i], strTwo[k], count2)
-                      count2++;
-                      if (subResult === true) {
-                        evenCount++;}
-                      /* if (subResult === true) { evenResult = true;
-                        evenCount++;                      
-                       
-                        }
-                      else count2++;  */
-                    }/*  console.log(count2, evenCount, strOne[i], strTwo[k], subResult);  */
-                    if (/* (count1+oddCount) === (count2+evenCount) && */ (oddCount%2 === count1%2 && evenCount%2 === count2%2)) result = true;
-                    else result = false;
-                    /* if ((oddResult === true && evenResult === true) && (count2%evenCount === 0 && count1%oddCount === 0)) result = true; 
-                    else result = false; */
-                }
-              }
-            } console.log(count1, oddCount, count2, evenCount); console.log(result)
-           return result;
+				function stringCompare(strOne, strTwo) {
+            
+          let result;
+          let oddStringOne = '', sortedOddStringOne;
+          let evenStringOne = '', sortedEvenStringOne;
+          let oddStringTwo = '', sortedOddStringTwo;
+          let evenStringTwo = '', sortedEvenStringTwo;
 
-					}
+          for (let i = 0; i < strOne.length; i++) {
+            if (i%2 === 0) oddStringOne += strOne[i] ;
+            else evenStringOne += strOne[i];
+          }
+
+          for (let k = 0; k < strTwo.length; k++) {
+            if (k%2 === 0) oddStringTwo += strTwo[k] ;
+            else evenStringTwo += strTwo[k];
+          }          
+
+          sortedOddStringOne = oddStringOne.split('').sort().join('');
+          sortedOddStringTwo = oddStringTwo.split('').sort().join('');
+          sortedEvenStringOne = evenStringOne.split('').sort().join('');
+          sortedEvenStringTwo = evenStringTwo.split('').sort().join('');
+
+          if (sortedOddStringOne === sortedOddStringTwo && sortedEvenStringOne === sortedEvenStringTwo) result = true;
+          else result = false;
+
+          console.log(sortedOddStringOne, sortedOddStringTwo);
+          console.log(sortedEvenStringOne, sortedEvenStringTwo);
+          console.log(result);
+
+          return result;
+				}
 									
-					stringCompare(strOne, strTwo);
+				stringCompare(strOne, strTwo);
       </script>
   	</main>
   </body>
